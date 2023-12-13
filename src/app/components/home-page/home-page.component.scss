@@ -44,10 +44,13 @@
 .course-single{
   border: 2px solid #046138;
   border-radius: 4%;
-  width: 29%;
+  width: 32%;
   max-height: 29%;
   padding: 0.5%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .info-button{
@@ -68,6 +71,14 @@
 
 .test{
   color: blue;
+}
+
+.faded-gold {
+  background-color: #E7E3C6;
+}
+
+.off-white {
+  background-color: #F2F1F0;
 }
 
 @media screen and (max-width:768px) and (min-width:426px){

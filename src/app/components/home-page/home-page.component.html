@@ -1,11 +1,11 @@
 <app-header></app-header>
 <div class="body-margin">
-  <div class="flex w-100">
+  <div class="flex">
     <button class="button-styling flex-auto" (click)="openAddCourse()">Add Course</button>
   </div>
   <div class="course-container">
-    <div *ngFor="let course of courses" class=" course-single body-margin">
-      <div >
+    <div *ngFor="let course of courses" class="course-single body-margin faded-gold">
+      <div>
         <label class="font-bold"> {{ course.name }}</label>
         <label>
           <span> <br> Instructor:</span>
@@ -27,19 +27,16 @@
           <span> <br> Course ID:</span>
           {{course.id}}
         </label>
-      <div class="margin-top border-top">
+      </div>
+      <div class="margin-top border-top align-stretch">
         {{course.description}}
       </div>
-
-
-
       <div class="button-array">
         <button (click)="openEdit(course)" class="button-styling">Edit</button>
-        <button class="body-margin info-button">Get Course Info</button>
+        <button class="body-margin info-button off-white">Get Course Info</button>
         <button (click)="openDelete(course.id)" class="delete-button">Delete</button>
       </div>
-    </div>
-  </div> 
+    </div> 
   </div>
 </div>
 
@@ -53,6 +50,7 @@
     </div>
   </div>
 </p-dialog>
+
 
 <p-dialog [(visible)]="showEditModal" [modal]="true">
   <ng-template pTemplate="header">
@@ -98,9 +96,6 @@
     </div>
   </div>
 </p-dialog>
-
-
-
 
 
 <p-dialog [(visible)]="showAddCourseModal" [modal]="true" [draggable]="false">
