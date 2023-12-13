@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from '../../models/course';
-import {CourseService} from '../../service/course.service';
+import { Course } from '../../models/course';
+import { CourseService } from '../../service/course.service';
 
 @Component({
   selector: 'app-home-page',
@@ -24,6 +24,7 @@ export class HomePageComponent implements OnInit {
    */
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => this.courses = courses)
+    setTimeout(() => { this.ngOnInit() }, 1000 * 1);
   }
 
   /**
@@ -38,7 +39,7 @@ export class HomePageComponent implements OnInit {
    *  Should also be used to set the Edit object to the course we will be editing
    */
   openEdit(course: Course) {
-    this.courseEdit = {...course};
+    this.courseEdit = { ...course };
     this.showEditModal = true;
   }
 
@@ -71,7 +72,7 @@ export class HomePageComponent implements OnInit {
    *  This function should be invoked when the user cancels editing a course.
    */
   closeEditModal() {
-    // TODO: add code here
+    this.showEditModal = false;
   }
 
   /**
@@ -103,5 +104,4 @@ export class HomePageComponent implements OnInit {
     });
     this.showEditModal = false;
   }
-
 }

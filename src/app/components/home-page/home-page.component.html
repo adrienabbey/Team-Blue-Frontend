@@ -1,32 +1,42 @@
 <app-header></app-header>
 <div class="body-margin">
-  <div class="flex w-100">
+  <div class="flex">
     <button class="button-styling flex-auto" (click)="openAddCourse()">Add Course</button>
   </div>
-  <div class="flex flex-wrap w-100 ">
-    <div *ngFor="let course of courses">
+  <div class="course-container">
+    <div *ngFor="let course of courses" class="course-single body-margin faded-gold">
       <div>
         <label class="font-bold"> {{ course.name }}</label>
         <label>
-          <span> Credit Hours:</span>
+          <span> <br> Instructor:</span>
+          {{course.instructor}}
+        </label>
+        <label>
+          <span> <br> Credit Hours:</span>
           {{course.creditHours}}
         </label>
+        <label>
+          <span><br> Course Type:</span>
+          {{course.type}}
+        </label>
+        <label>
+          <span> <br> Course Code:</span>
+          {{course.code}}
+        </label>
+        <label>
+          <span> <br> Course ID:</span>
+          {{course.id}}
+        </label>
       </div>
-      <div>
-        {{course.code}}
+      <div class="margin-top border-top align-stretch">
+        {{course.description}}
       </div>
-      <div>
-        {{course.id}}
+      <div class="button-array">
+        <button (click)="openEdit(course)" class="button-styling">Edit</button>
+        <button class="body-margin info-button off-white">Get Course Info</button>
+        <button (click)="openDelete(course.id)" class="delete-button">Delete</button>
       </div>
-
-      <div>
-        <button (click)="openEdit(course)">Edit</button>
-        <button (click)="openDelete(course.id)">Delete</button>
-      </div>
-      <!----
-      TODO: Add Course Content Here
-      ---->
-    </div>
+    </div> 
   </div>
 </div>
 
@@ -35,17 +45,58 @@
   <div>
     <span>Are you sure you want to delete?</span>
     <div>
-      <button (click)="closeDeleteModal()">Cancel</button>
-      <button (click)="deleteCourse()">Delete</button>
+      <button (click)="closeDeleteModal()" class="cancel-button body-margin">Cancel</button>
+      <button (click)="deleteCourse()" class="delete-button body-margin">Delete</button>
     </div>
   </div>
 </p-dialog>
 
+
 <p-dialog [(visible)]="showEditModal" [modal]="true">
-  <!--
-  TODO: Add Edit Modal Content Here
-  --->
+  <ng-template pTemplate="header">
+    <div>
+      Edit Course
+    </div>
+  </ng-template>
+  <div class="flex flex-col w-100 gap-2">
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Name</label>
+      <input type="text" class="input-style" [(ngModel)]="courseEdit.name">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Instructor</label>
+      <input type="text" class="input-style" [(ngModel)]="courseEdit.instructor">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Code</label>
+      <input type="text" class="input-style" [(ngModel)]="courseEdit.code">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Type</label>
+      <input type="text" class="input-style" [(ngModel)]="courseEdit.type">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Level</label>
+      <select name="level" class="input-style" [(ngModel)]="courseEdit.level">
+        <option value="UNDERGRADUATE">Undergraduate</option>
+        <option value="GRADUATE">Graduate</option>
+      </select>
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Credit Hours</label>
+      <input type="number" class="input-style" [(ngModel)]="courseEdit.creditHours">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Description</label>
+      <input type="text" class="input-style" [(ngModel)]="courseEdit.description">
+    </div>
+    <div class="flex w-100 justify-between">
+      <button class="cancel-button" (click)="closeEditModal()">Cancel</button>
+      <button class="button-styling" (click)="confirmEdit()">Confirm</button>
+    </div>
+  </div>
 </p-dialog>
+
 
 <p-dialog [(visible)]="showAddCourseModal" [modal]="true" [draggable]="false">
   <ng-template pTemplate="header">
@@ -57,6 +108,10 @@
     <div class="flex flex-col gap">
       <label class="font-bold">Course Name</label>
       <input type="text" class="input-style" [(ngModel)]="courseAdd.name">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Instructor</label>
+      <input type="text" class="input-style" [(ngModel)]="courseAdd.instructor">
     </div>
     <div class="flex flex-col gap">
       <label class="font-bold">Course Code</label>
@@ -76,6 +131,10 @@
     <div class="flex flex-col gap">
       <label class="font-bold">Course Credit Hours</label>
       <input type="number" class="input-style" [(ngModel)]="courseAdd.creditHours">
+    </div>
+    <div class="flex flex-col gap">
+      <label class="font-bold">Course Description</label>
+      <input type="text" class="input-style" [(ngModel)]="courseAdd.description">
     </div>
     <div class="flex w-100 justify-between">
       <button class="cancel-button" (click)="closeAddModal()">Cancel</button>

@@ -5,4 +5,6 @@ export class Course {
   name: string;
   level: string;
   creditHours: number;
+  instructor: String;
+  description: String;
 }

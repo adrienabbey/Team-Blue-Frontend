@@ -28,10 +28,10 @@
 
 .delete-button {
   padding: 1rem;
-  background-color: red;
-  color: black;
+  background-color: grey;
+  color: white;
   border-radius: 1rem;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 .input-style {
@@ -39,4 +39,59 @@
   padding: 1rem;
   border-radius: 1rem;
   border: 2px solid black;
+}
+
+.course-single{
+  border: 2px solid #046138;
+  border-radius: 4%;
+  width: 32%;
+  max-height: 29%;
+  padding: 0.5%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-button{
+  border: none;
+  background-color: white;
+}
+
+.course-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-array{
+  display: flex;
+  justify-content: center;
+}
+
+.test{
+  color: blue;
+}
+
+.faded-gold {
+  background-color: #E7E3C6;
+}
+
+.off-white {
+  background-color: #F2F1F0;
+}
+
+@media screen and (max-width:768px) and (min-width:426px){
+  .course-single{
+    width: 47%;
+    max-height: 47%;
+
+  }
+}
+
+@media screen and (max-width: 425px) and (min-width:0) {
+  .course-single{
+    width: 95%;
+    max-height: 95%;
+  }
 }
